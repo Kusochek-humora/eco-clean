@@ -1,0 +1,172 @@
+<section class="quiz" id="quiz" aria-labelledby="quiz-title">
+  <div class="container">
+    <div class="quiz__box">
+      <h2 class="quiz__title" id="quiz-title" data-i18n="quiz.title">Рассчитайте цену клининга для вашего бизнеса</h2>
+      <p class="quiz__progress" aria-live="polite" data-quiz-progress>Вопрос 1 из 5</p>
+
+      <form class="quiz__form" novalidate>
+        <fieldset class="quiz__step">
+          <legend class="quiz__question" data-i18n="quiz.steps.object.question">Какой объект нужно обслуживать?</legend>
+          <div class="quiz__options">
+            <label class="quiz__option">
+              <input class="quiz__radio" type="radio" name="object" value="office" checked />
+              <span class="quiz__dot" aria-hidden="true"></span>
+              <span data-i18n="quiz.steps.object.options.office">Офисное помещение</span>
+            </label>
+            <label class="quiz__option">
+              <input class="quiz__radio" type="radio" name="object" value="restaurant" />
+              <span class="quiz__dot" aria-hidden="true"></span>
+              <span data-i18n="quiz.steps.object.options.restaurant">Ресторан / кафе</span>
+            </label>
+            <label class="quiz__option">
+              <input class="quiz__radio" type="radio" name="object" value="industrial" />
+              <span class="quiz__dot" aria-hidden="true"></span>
+              <span data-i18n="quiz.steps.object.options.industrial">Производство / склад</span>
+            </label>
+            <label class="quiz__option">
+              <input class="quiz__radio" type="radio" name="object" value="mall" />
+              <span class="quiz__dot" aria-hidden="true"></span>
+              <span data-i18n="quiz.steps.object.options.mall">Торговый центр / магазин</span>
+            </label>
+            <label class="quiz__option">
+              <input class="quiz__radio" type="radio" name="object" value="school" />
+              <span class="quiz__dot" aria-hidden="true"></span>
+              <span data-i18n="quiz.steps.object.options.school">Школа / колледж / университет</span>
+            </label>
+            <label class="quiz__option">
+              <input class="quiz__radio" type="radio" name="object" value="other" />
+              <span class="quiz__dot" aria-hidden="true"></span>
+              <span data-i18n="quiz.steps.object.options.other">Другое</span>
+            </label>
+          </div>
+        </fieldset>
+        <fieldset class="quiz__step" hidden>
+          <legend class="quiz__question" data-i18n="quiz.steps.area.question">Какая площадь помещения требует уборки?</legend>
+          <div class="quiz__options quiz__options--by-column">
+            <label class="quiz__option">
+              <input class="quiz__radio" type="radio" name="area" value="lt100" checked />
+              <span class="quiz__dot" aria-hidden="true"></span>
+              <span data-i18n="quiz.steps.area.options.lt100">До 100 м²</span>
+            </label>
+            <label class="quiz__option">
+              <input class="quiz__radio" type="radio" name="area" value="100-300" />
+              <span class="quiz__dot" aria-hidden="true"></span>
+              <span data-i18n="quiz.steps.area.options.100-300">100 – 300 м²</span>
+            </label>
+            <label class="quiz__option">
+              <input class="quiz__radio" type="radio" name="area" value="300-500" />
+              <span class="quiz__dot" aria-hidden="true"></span>
+              <span data-i18n="quiz.steps.area.options.300-500">300 – 500 м²</span>
+            </label>
+            <label class="quiz__option">
+              <input class="quiz__radio" type="radio" name="area" value="500-1000" />
+              <span class="quiz__dot" aria-hidden="true"></span>
+              <span data-i18n="quiz.steps.area.options.500-1000">500 – 1 000 м²</span>
+            </label>
+            <label class="quiz__option">
+              <input class="quiz__radio" type="radio" name="area" value="1000-3000" />
+              <span class="quiz__dot" aria-hidden="true"></span>
+              <span data-i18n="quiz.steps.area.options.1000-3000">1 000 – 3 000 м²</span>
+            </label>
+            <label class="quiz__option">
+              <input class="quiz__radio" type="radio" name="area" value="gt3000" />
+              <span class="quiz__dot" aria-hidden="true"></span>
+              <span data-i18n="quiz.steps.area.options.gt3000">Больше 3 000 м²</span>
+            </label>
+          </div>
+        </fieldset>
+        <fieldset class="quiz__step" hidden>
+          <legend class="quiz__question" data-i18n="quiz.steps.frequency.question">Как часто вам нужна уборка?</legend>
+          <div class="quiz__options">
+            <label class="quiz__option">
+              <input class="quiz__radio" type="radio" name="frequency" value="daily" checked />
+              <span class="quiz__dot" aria-hidden="true"></span>
+              <span data-i18n="quiz.steps.frequency.options.daily">Ежедневно</span>
+            </label>
+            <label class="quiz__option">
+              <input class="quiz__radio" type="radio" name="frequency" value="weekly" />
+              <span class="quiz__dot" aria-hidden="true"></span>
+              <span data-i18n="quiz.steps.frequency.options.weekly">Раз в неделю</span>
+            </label>
+            <label class="quiz__option">
+              <input class="quiz__radio" type="radio" name="frequency" value="custom" />
+              <span class="quiz__dot" aria-hidden="true"></span>
+              <span data-i18n="quiz.steps.frequency.options.custom">По индивидуальному графику</span>
+            </label>
+            <label class="quiz__option">
+              <input class="quiz__radio" type="radio" name="frequency" value="several" />
+              <span class="quiz__dot" aria-hidden="true"></span>
+              <span data-i18n="quiz.steps.frequency.options.several">Несколько раз в неделю</span>
+            </label>
+            <label class="quiz__option">
+              <input class="quiz__radio" type="radio" name="frequency" value="general" />
+              <span class="quiz__dot" aria-hidden="true"></span>
+              <span data-i18n="quiz.steps.frequency.options.general">Только генеральная уборка</span>
+            </label>
+          </div>
+        </fieldset>
+        <fieldset class="quiz__step" hidden>
+          <legend class="quiz__question" data-i18n="quiz.steps.format.question">Какой формат сотрудничества вам удобнее?</legend>
+          <div class="quiz__options">
+            <label class="quiz__option">
+              <input class="quiz__radio" type="radio" name="format" value="permanent" checked />
+              <span class="quiz__dot" aria-hidden="true"></span>
+              <span data-i18n="quiz.steps.format.options.permanent">Постоянное обслуживание</span>
+            </label>
+            <label class="quiz__option">
+              <input class="quiz__radio" type="radio" name="format" value="scheduled" />
+              <span class="quiz__dot" aria-hidden="true"></span>
+              <span data-i18n="quiz.steps.format.options.scheduled">Генеральная уборка по графику</span>
+            </label>
+            <label class="quiz__option">
+              <input class="quiz__radio" type="radio" name="format" value="facade" />
+              <span class="quiz__dot" aria-hidden="true"></span>
+              <span data-i18n="quiz.steps.format.options.facade">Уборка фасадов</span>
+            </label>
+            <label class="quiz__option">
+              <input class="quiz__radio" type="radio" name="format" value="oneoff" />
+              <span class="quiz__dot" aria-hidden="true"></span>
+              <span data-i18n="quiz.steps.format.options.oneoff">Разовая уборка</span>
+            </label>
+            <label class="quiz__option">
+              <input class="quiz__radio" type="radio" name="format" value="renovation" />
+              <span class="quiz__dot" aria-hidden="true"></span>
+              <span data-i18n="quiz.steps.format.options.renovation">Уборка после ремонта или строительства</span>
+            </label>
+          </div>
+        </fieldset>
+        <fieldset class="quiz__step quiz__step--final" hidden>
+          <legend class="quiz__question" data-i18n="quiz.final.question">Мы сделаем расчёт и свяжемся с вами в течение 15 минут</legend>
+          <div class="quiz__fields">
+            <input class="form-input" type="text" name="name" autocomplete="name" required placeholder="Ваше имя" data-i18n-placeholder="quiz.final.name" aria-label="Ваше имя" data-i18n-aria-label="quiz.final.name" />
+            <input class="form-input" type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="Телефон" data-i18n-placeholder="quiz.final.phone" aria-label="Телефон" data-i18n-aria-label="quiz.final.phone" />
+            <p class="form-error" role="alert" hidden></p>
+            <p class="form-consent" data-i18n="quiz.final.consent">Нажимая на кнопку, вы соглашаетесь с условиями <a href="#privacy">Политики конфиденциальности</a></p>
+            <button class="btn btn--glass quiz__submit" type="submit" data-i18n="quiz.final.submit">Получить консультацию</button>
+          </div>
+        </fieldset>
+
+        <div class="quiz__actions">
+          <button class="quiz__back" type="button" hidden>
+            <icon name="arrow-left" class="quiz__back-icon"></icon>
+            <span data-i18n="quiz.back">Вернуться назад</span>
+          </button>
+          <button class="btn btn--glass quiz__next" type="button">
+            <span data-i18n="quiz.next">Следующий вопрос</span>
+            <icon name="arrow-left" class="quiz__next-icon"></icon>
+          </button>
+        </div>
+      </form>
+
+      <div class="quiz__done" role="status" hidden>
+        <p class="quiz__done-title" data-i18n="quiz.done.title">Спасибо! Заявка отправлена</p>
+        <p class="quiz__done-text" data-i18n="quiz.done.text">Мы свяжемся с вами в течение 15 минут.</p>
+      </div>
+
+      <icon name="form-decor" class="quiz__decor quiz__decor--desktop"></icon>
+      <icon name="form-decor-2" class="quiz__decor quiz__decor--desktop quiz__decor--second"></icon>
+      <icon name="form-decor-mobile" class="quiz__decor quiz__decor--mobile"></icon>
+      <icon name="form-decor-mobile" class="quiz__decor quiz__decor--mobile quiz__decor--mobile-2"></icon>
+    </div>
+  </div>
+</section>

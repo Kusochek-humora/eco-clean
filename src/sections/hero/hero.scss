@@ -1,0 +1,226 @@
+@use "@/styles/abstracts" as *;
+
+// TODO: градиент левого блока и размеры шрифтов оценены по скриншотам — сверить с макетом
+.hero {
+  padding: 16px 0 0;
+
+  @include media("lg") {
+    padding-top: 4px;
+  }
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+
+    @include media("lg") {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+
+  // ---- левый синий блок ----
+  &__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    border-radius: $radius-section;
+    background: linear-gradient(160deg, $blue 0%, #3f8cee 100%);
+    color: $white;
+
+    @include media("lg") {
+      padding: 24px 20px;
+      border-radius: $radius-card;
+    }
+  }
+
+  &__decor {
+    position: absolute;
+    top: 24px;
+    right: 40px;
+    width: 100px;
+    height: auto;
+    color: #fafafa;
+
+    @include media("lg") {
+      top: 16px;
+      right: 20px;
+      width: 58px;
+    }
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 90%;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+
+  &__title-main {
+    font-size: 48px;
+
+    @include media("lg") {
+      font-size: 32px;
+    }
+  }
+
+  &__title-sub {
+    font-size: 32px;
+
+    @include media("lg") {
+      font-size: 20px;
+    }
+  }
+
+  &__subtitle {
+    margin-top: 32px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.3;
+
+    @include media("lg") {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+  }
+
+  &__text {
+    margin-top: 16px;
+    max-width: 580px;
+    font-size: 16px;
+    line-height: 1.5;
+
+    @include media("lg") {
+      font-size: 14px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 16px;
+    margin-top: auto;
+    padding-top: 32px;
+
+    @include media("lg") {
+      flex-direction: column;
+    }
+
+    .btn {
+      width: 275px;
+      padding-inline: 16px;
+
+      @include media("lg") {
+        width: 100%;
+      }
+    }
+  }
+
+  // ---- правый блок с фото ----
+  &__media {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: 440px;
+    overflow: hidden;
+    border-radius: $radius-section;
+
+    @include media("lg") {
+      min-height: 380px;
+      border-radius: $radius-card;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__stats {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    width: 100%;
+    padding: 20px;
+
+    @include media("lg") {
+      gap: 10px;
+      padding: 12px;
+    }
+  }
+
+  // ряды разной ширины: 3:2 и 2:3 (как в макете)
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid rgba($white, 0.5);
+    border-radius: 20px;
+    background-color: rgba($white, 0.15);
+    backdrop-filter: blur(10px);
+    color: $white;
+
+    &:nth-child(1) {
+      flex-basis: calc(60% - 8px);
+    }
+    &:nth-child(2) {
+      flex-basis: calc(40% - 8px);
+    }
+    &:nth-child(3) {
+      flex-basis: calc(42% - 8px);
+    }
+    &:nth-child(4) {
+      flex-basis: calc(58% - 8px);
+    }
+
+    // мобильный: gap 10px, ряды 58:42 и 42:58 (в макете карточки «hug»: 178 / 129 px)
+    @include media("lg") {
+      padding: 12px;
+      border-radius: 14px;
+
+      &:nth-child(1),
+      &:nth-child(4) {
+        flex-basis: calc(58% - 5px);
+      }
+      &:nth-child(2),
+      &:nth-child(3) {
+        flex-basis: calc(42% - 5px);
+      }
+    }
+  }
+
+  &__stat-value {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+
+    [data-count] {
+      display: inline-block; // min-width ставит js, чтобы текст не прыгал при счёте
+    }
+
+    @include media("lg") {
+      font-size: 24px;
+    }
+  }
+
+  &__stat-label {
+    font-size: 14px;
+    line-height: 1.3;
+
+    @include media("lg") {
+      font-size: 12px;
+    }
+  }
+}

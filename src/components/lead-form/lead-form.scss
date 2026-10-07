@@ -1,0 +1,43 @@
+@use "@/styles/abstracts" as *;
+
+.lead-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: $white;
+
+  @include media("lg") {
+    gap: 10px;
+  }
+
+  &__submit {
+    width: 100%;
+    margin-top: 4px;
+  }
+
+  // после отправки остаётся только «спасибо»
+  &.is-sent > :not(.lead-form__done) {
+    display: none;
+  }
+
+  &__done {
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  &__done-title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+
+    @include media("lg") {
+      font-size: 20px;
+    }
+  }
+
+  &__done-text {
+    margin-top: 12px;
+    font-size: 16px;
+  }
+}

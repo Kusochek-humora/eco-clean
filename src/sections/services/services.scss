@@ -1,0 +1,116 @@
+@use "@/styles/abstracts" as *;
+
+// стили текста из Figma: заголовок Arial Bold 32/24 (lh 120%), абзац и списки Regular 14 (lh 150%),
+// заголовки карточек Bold 24 / 20 на мобильном (lh 120%), всё #000
+.services {
+  margin-top: $section-gap;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 530px 1fr;
+    gap: 20px;
+
+    @include media("xl") {
+      grid-template-columns: 5fr 7fr;
+    }
+    @include media("lg") {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+
+  // ---- левая колонка: заголовок, текст, фото (фото тянется до низа правой колонки) ----
+  &__main {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: $text-nav;
+
+    @include media("lg") {
+      font-size: 24px;
+    }
+  }
+
+  &__title-accent {
+    color: $blue;
+  }
+
+  &__intro {
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: $text-nav;
+
+    @include media("lg") {
+      margin-top: 12px;
+    }
+  }
+
+  &__photo {
+    flex: none;
+    height: 488px; // макет: 530 × 488
+    margin-top: 40px;
+    overflow: hidden;
+    border-radius: $radius-section;
+
+    @include media("lg") {
+      height: auto;
+      margin-top: 20px;
+      aspect-ratio: 1.24;
+      border-radius: $radius-card;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  // ---- карточки справа ----
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include media("lg") {
+      gap: 10px;
+    }
+  }
+
+  &__card {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgba(#205ec7, 0.1);
+  }
+
+  &__card-title {
+    font-size: 24px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: $text-nav;
+
+    @include media("lg") {
+      font-size: 20px;
+    }
+  }
+
+  &__list {
+    margin: 16px 0 0;
+    padding-left: 18px;
+    list-style: disc;
+    font-size: 14px;
+    line-height: 1.5;
+    color: $text-nav;
+
+    @include media("lg") {
+      margin-top: 12px;
+    }
+  }
+}

@@ -1,0 +1,59 @@
+@use "@/styles/abstracts" as *;
+
+// hover primary-кнопки (WhatsApp): градиент. background-image не анимируется,
+// поэтому градиент лежит в ::before и плавно проявляется через opacity.
+// TODO: сверить остальные кнопки ui-kit (оставить заявку, рассчитать, консультация)
+.btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  @include flex-center;
+  gap: 8px;
+  min-height: 50px;
+  padding: 0 32px; // hug: «Написать WhatsApp» = 213×50
+  border-radius: $radius-pill;
+  font-size: 16px;
+  text-align: center;
+  @include transition-simple;
+
+  // TODO: hover white/glass: сверить с Variant2 в ui-kit
+  &--white {
+    background-color: $white;
+    color: $black;
+
+    @include hover {
+      background-color: $card-bg;
+    }
+  }
+
+  &--glass {
+    border: 1px solid rgba($white, 0.5);
+    background-color: rgba($white, 0.3);
+    color: $white;
+
+    @include hover {
+      background-color: rgba($white, 0.45);
+    }
+  }
+
+  &--primary {
+    background-color: $blue;
+    color: $white;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: $gradient-hover;
+      opacity: 0;
+      @include transition-simple;
+    }
+
+    @include hover {
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+<header class="header">
+  <div class="container header__inner">
+    <a class="header__logo" href="#top" aria-label="ЭКО Чистка">
+      <icon name="logo" class="header__logo-icon"></icon>
+    </a>
+
+    <nav class="header__nav" id="nav" aria-label="Главное меню" data-i18n-aria-label="header.navLabel">
+      <ul class="header__list">
+        <li><a href="#top" data-i18n="header.nav.home">Главная</a></li>
+        <li><a href="#quiz" data-i18n="header.nav.calc">Рассчитать стоимость</a></li>
+        <li><a href="#services" data-i18n="header.nav.services">Услуги</a></li>
+        <li><a href="#partners" data-i18n="header.nav.partners">Партнёры</a></li>
+        <li><a href="#faq" data-i18n="header.nav.faq">FAQ</a></li>
+        <li><a href="#contacts" data-i18n="header.nav.contacts">Контакты</a></li>
+      </ul>
+      <a class="btn btn--primary header__wa header__wa--menu" href="https://wa.me/77473132024" target="_blank" rel="noopener" data-i18n="header.whatsapp">Написать WhatsApp</a>
+    </nav>
+
+    <include src="src/components/city-switcher/city-switcher.html"></include>
+
+    <include src="src/components/lang-switcher/lang-switcher.html"></include>
+
+    <a class="btn btn--primary header__wa header__wa--desktop" href="https://wa.me/77473132024" target="_blank" rel="noopener" data-i18n="header.whatsapp">Написать WhatsApp</a>
+
+    <button class="header__burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Меню" data-i18n-aria-label="header.menu">
+      <span class="header__burger-text" data-i18n="header.menu">Меню</span>
+      <icon name="burger-menu" class="header__burger-icon"></icon>
+      <icon name="close" class="header__close-icon"></icon>
+    </button>
+  </div>
+</header>

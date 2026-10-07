@@ -1,15 +1,28 @@
 @use "../abstracts" as *;
 
+// высота fixed-хедера (padding + лого 56px / 41px)
+:root {
+  --header-h: 96px;
+
+  @include media("lg") {
+    --header-h: 69px;
+  }
+}
+
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
 }
 
 body {
   min-height: 100vh;
+  padding-top: var(--header-h);
   text-rendering: optimizeSpeed;
   font-family: $font-main;
   color: $black;
   background-color: $white;
+  font-size: 16px;
+  line-height: 1.3;
 }
 
 .container {
@@ -19,10 +32,10 @@ body {
   padding: 0 $container-padding;
 
   @include media("lg") {
-    padding: 0 15px;
+    padding: 0 20px;
   }
   @include media("sm") {
-    padding: 0 10px;
+    padding: 0 15px;
   }
 }
 

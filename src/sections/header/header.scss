@@ -1,0 +1,196 @@
+@use "@/styles/abstracts" as *;
+
+// header — fixed; высота в --header-h (base.scss), от неё отступ body и scroll-padding
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  padding: 20px 0;
+  background-color: $white;
+
+  @include media("lg") {
+    padding: 14px 0;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include media("xl") {
+      gap: 20px;
+    }
+    @include media("lg") {
+      gap: 12px;
+    }
+  }
+
+  &__logo {
+    flex-shrink: 0;
+    color: $blue;
+  }
+
+  &__logo-icon {
+    width: 152px;
+    height: auto;
+
+    @include media("lg") {
+      width: 112px;
+    }
+  }
+
+  &__nav {
+    margin-left: auto;
+    margin-right: 56px; // + gap 24px = 80px до города
+
+    @include media("lg") {
+      position: fixed;
+      inset: var(--header-h) 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      margin: 0;
+      padding: 40px 20px 30px;
+      background-color: $white;
+      opacity: 0;
+      visibility: hidden;
+      @include transition-simple;
+    }
+    @include media("sm") {
+      padding: 40px 15px 30px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 32px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: $text-nav;
+    white-space: nowrap;
+
+    @include media("xl") {
+      gap: 20px;
+    }
+    @include media("lg") {
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      font-size: 16px;
+    }
+
+    a {
+      @include transition-simple;
+
+      @include hover {
+        color: $text-hover;
+      }
+    }
+  }
+
+  &__city {
+    @include media("lg") {
+      display: none;
+    }
+  }
+
+  &__wa {
+    flex-shrink: 0;
+
+    &--menu {
+      display: none;
+    }
+
+    @include media("lg") {
+      &--desktop {
+        display: none;
+      }
+      &--menu {
+        display: flex;
+      }
+    }
+  }
+
+  &__burger {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 14px;
+    border-radius: $radius-pill;
+    background-color: $blue;
+    color: $white;
+    font-size: 14px;
+    @include transition-simple;
+
+    @include media("lg") {
+      display: flex;
+    }
+  }
+
+  &__burger-icon,
+  &__close-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__close-icon {
+    display: none;
+  }
+
+  // мобильный порядок: лого, язык (уезжает вправо), город, бургер
+  @include media("lg") {
+    &__logo {
+      order: 1;
+    }
+    .lang-switcher {
+      order: 2;
+      margin-left: auto;
+    }
+    &__city {
+      order: 3;
+    }
+    &__burger {
+      order: 4;
+    }
+  }
+
+  // ---- открытое мобильное меню ----
+  @include media("lg") {
+    &.is-open &__nav {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    // затемнение страницы под панелью
+    &::before {
+      content: "";
+      position: fixed;
+      inset: var(--header-h) 0 0;
+      background-color: rgba($black, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      @include transition-simple;
+    }
+    &.is-open::before {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &.is-open &__city {
+      display: flex;
+    }
+    &.is-open &__burger {
+      width: 40px;
+      padding: 0;
+      justify-content: center;
+    }
+    &.is-open &__burger-text,
+    &.is-open &__burger-icon {
+      display: none;
+    }
+    &.is-open &__close-icon {
+      display: block;
+    }
+  }
+}

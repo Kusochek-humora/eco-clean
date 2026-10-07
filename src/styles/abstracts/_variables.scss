@@ -1,4 +1,5 @@
 // Breakpoints (desktop-first, max-width). Порядок — от большего к меньшему
+// макеты: десктоп 1440, мобильный 390
 $breakpoints: (
   "xl": 1280px,
   "lg": 1024px,
@@ -6,17 +7,32 @@ $breakpoints: (
   "sm": 576px
 );
 
-// colors
+// colors (из ui-kit Figma)
 $white: #fff;
-$black: #000;
-$primary: #03467c;
-$primary-hover: #02345c;
+$black: #222;
+$text-nav: #000;
+$blue: #2252c1;
+$blue-light: #89b0f2;
+$text-hover: #8a8a8a; // hover пунктов меню, города, языка (серый в ui-kit), TODO: сверить hex
+$gradient-section: linear-gradient(110deg, #2f77e0 0%, #2252c1 70%); // фон квиза, TODO: сверить с макетом
+$gradient-hover: linear-gradient(249.97deg, #2252c1 -7.22%, #58a3f2 102.18%);
+$card-bg: #e6e9f8; // TODO: сверить со скриншотом (светлые карточки)
 
-// fonts
-$font-main: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+$primary: $blue;
 
-// layout
-$container-width: 1280px;
+// fonts (в макете только Arial Regular / Bold)
+$font-main: Arial, Helvetica, sans-serif;
+
+// layout: контент 1300px + по 20px полей = 1340px (max-width контейнера)
+$container-width: 1300px;
 $container-padding: 20px;
+
+// вертикальный отступ между блоками страницы (margin-top у каждой секции после hero)
+$section-gap: 70px;
+
+// radius
+$radius-section: 32px;
+$radius-card: 24px;
+$radius-pill: 100px;
 
 $transition: 0.3s all;

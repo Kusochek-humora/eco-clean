@@ -1,0 +1,82 @@
+@use "@/styles/abstracts" as *;
+
+// карточки: 4 в ряд (в макете 310×265, gap 20), на планшете 2×2, на мобильном — горизонтальный слайдер
+.advantages {
+  margin-top: $section-gap;
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+
+    @include media("lg") {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include media("sm") {
+      display: flex;
+      overflow-x: auto;
+      // выезд к краю экрана: контейнер даёт поля, слайдер их «съедает»
+      margin-inline: -15px;
+      padding-inline: 15px;
+      scroll-snap-type: x mandatory;
+      scroll-padding-inline: 15px;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+
+  &__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 265px;
+    padding: 20px;
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: rgba(#205ec7, 0.1);
+
+    @include media("sm") {
+      flex: 0 0 82%;
+      min-height: 0;
+      scroll-snap-align: start;
+    }
+  }
+
+  &__decor {
+    position: absolute;
+    // в макете: x 167 от левого края карточки 310px (= right: 0 при ширине svg 143), y 0
+    top: 0;
+    right: 0;
+    width: 143px;
+    height: auto;
+    pointer-events: none;
+  }
+
+  &__icon {
+    position: relative;
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+  }
+
+  // макет: заголовок Arial Bold 20/120% #000, текст Arial Regular 14/120% #000, между ними 20px
+  &__name {
+    position: relative;
+    margin-top: 32px;
+    font-size: 20px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: $text-nav;
+  }
+
+  &__text {
+    position: relative;
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.2;
+    color: $text-nav;
+  }
+}

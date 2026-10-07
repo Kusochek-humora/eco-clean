@@ -1,5 +1,17 @@
-<div class="lang-switcher" role="group" aria-label="Язык сайта" data-i18n-aria-label="header.lang">
-  <button class="lang-switcher__btn" type="button" data-lang="ru" lang="ru" aria-label="Русский">RU</button>
-  <span aria-hidden="true"> / </span>
-  <button class="lang-switcher__btn" type="button" data-lang="kz" lang="kk" aria-label="Қазақша">KZ</button>
+<div class="lang-switcher">
+  <button
+    class="lang-switcher__current"
+    type="button"
+    aria-haspopup="true"
+    aria-expanded="false"
+    aria-label="Язык сайта"
+    data-i18n-aria-label="header.lang"
+  >
+    <icon name="chevron" class="lang-switcher__chevron"></icon>
+    <span data-lang-current>RU</span>
+  </button>
+  <ul class="lang-switcher__list" hidden>
+    <li><button class="lang-switcher__btn" type="button" data-lang="ru" lang="ru" aria-label="Русский">RU</button></li>
+    <li><button class="lang-switcher__btn" type="button" data-lang="kz" lang="kk" aria-label="Қазақша">KZ</button></li>
+  </ul>
 </div>

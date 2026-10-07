@@ -1,0 +1,74 @@
+@use "@/styles/abstracts" as *;
+
+// TODO: размеры шрифтов и градиент оценены по скриншотам — сверить с макетом (блок 1300×343)
+.request {
+  margin-top: $section-gap;
+
+  &__box {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 600px;
+    gap: 30px;
+    padding: 40px;
+    overflow: hidden;
+    border-radius: $radius-section;
+    background: $gradient-section;
+    color: $white;
+
+    @include media("lg") {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 20px;
+      border-radius: $radius-card;
+    }
+  }
+
+  &__text {
+    position: relative;
+    min-width: 0;
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 1.2;
+    text-transform: uppercase;
+
+    @include media("lg") {
+      font-size: 24px;
+    }
+  }
+
+  &__desc {
+    margin-top: 16px;
+    max-width: 420px;
+    font-size: 16px;
+    line-height: 1.2;
+
+    @include media("lg") {
+      max-width: none;
+    }
+  }
+
+  &__form {
+    position: relative;
+  }
+
+  // из Figma: десктоп — left 40 / bottom 29 (214×146), мобильный — top 20 / right 8 (93×65)
+  &__decor {
+    position: absolute;
+    left: 40px;
+    bottom: 29px;
+    width: 214px;
+    height: auto;
+    color: #fafafa;
+    pointer-events: none;
+
+    @include media("lg") {
+      top: 20px;
+      right: 8px;
+      left: auto;
+      bottom: auto;
+      width: 93px;
+    }
+  }
+}

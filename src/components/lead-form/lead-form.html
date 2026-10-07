@@ -1,0 +1,13 @@
+<form class="lead-form" novalidate>
+  <input class="form-input" type="text" name="name" autocomplete="name" required placeholder="Ваше имя" data-i18n-placeholder="leadForm.name" aria-label="Ваше имя" data-i18n-aria-label="leadForm.name" />
+  <input class="form-input" type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="Телефон" data-i18n-placeholder="leadForm.phone" aria-label="Телефон" data-i18n-aria-label="leadForm.phone" />
+  <input class="form-input" type="text" name="comment" autocomplete="off" placeholder="Комментарий" data-i18n-placeholder="leadForm.comment" aria-label="Комментарий" data-i18n-aria-label="leadForm.comment" />
+  <p class="form-error" role="alert" hidden></p>
+  <p class="form-consent" data-i18n="leadForm.consent">Нажимая на кнопку, вы соглашаетесь с условиями <a href="#privacy">Политики конфиденциальности</a></p>
+  <button class="btn btn--glass lead-form__submit" type="submit" data-i18n="leadForm.submit">Получить консультацию</button>
+
+  <div class="lead-form__done" role="status" hidden>
+    <p class="lead-form__done-title" data-i18n="leadForm.done.title">Спасибо! Заявка отправлена</p>
+    <p class="lead-form__done-text" data-i18n="leadForm.done.text">Мы свяжемся с вами в течение 15 минут.</p>
+  </div>
+</form>

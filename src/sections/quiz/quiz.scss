@@ -1,0 +1,315 @@
+@use "@/styles/abstracts" as *;
+
+// TODO: размеры шрифтов, высота пилюль и градиент оценены по скриншотам — сверить с макетом
+.quiz {
+  margin-top: $section-gap;
+
+  &__box {
+    position: relative;
+    padding: 40px;
+    overflow: hidden;
+    border-radius: $radius-section;
+    background: $gradient-section;
+    color: $white;
+
+    @include media("lg") {
+      padding: 20px;
+      border-radius: $radius-card;
+    }
+    // мобильный макет: все шаги одной высоты 345×670, кнопки прижаты к низу
+    @include media("sm") {
+      display: flex;
+      flex-direction: column;
+      min-height: 670px;
+    }
+  }
+
+  &__title {
+    position: relative;
+    max-width: 90%;
+    font-size: 32px;
+    line-height: 1.2;
+    text-transform: uppercase;
+
+    @include media("lg") {
+      font-size: 24px;
+    }
+  }
+
+  &__progress {
+    position: relative;
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 1.2;
+
+    @include media("lg") {
+      margin-top: 12px;
+      font-size: 14px;
+    }
+  }
+
+  &__form {
+    position: relative;
+
+    &[hidden] {
+      display: none;
+    }
+
+    @include media("sm") {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+  }
+
+  &__step {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  &__question {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    padding: 0;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+
+    @include media("lg") {
+      font-size: 20px;
+    }
+  }
+
+  // ---- варианты ----
+  &__options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px 16px;
+    margin-top: 20px;
+
+    // шаг 2: порядок по возрастанию, колонки заполняются сверху вниз (как в макете)
+    &--by-column {
+      grid-template-rows: repeat(2, auto);
+      grid-auto-flow: column;
+    }
+
+    @include media("md") {
+      grid-template-columns: repeat(2, 1fr);
+
+      &--by-column {
+        grid-template-rows: none;
+        grid-auto-flow: row;
+      }
+    }
+    @include media("sm") {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    padding: 8px 20px;
+    border-radius: $radius-pill;
+    background-color: $white;
+    color: $text-nav;
+    font-size: 14px;
+    line-height: 1.2;
+    cursor: pointer;
+    @include transition-simple;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: $card-bg;
+      }
+    }
+
+    &:has(:focus-visible) {
+      outline: 2px solid $white;
+      outline-offset: 2px;
+    }
+  }
+
+  &__radio {
+    @include visually-hidden;
+  }
+
+  &__dot {
+    flex-shrink: 0;
+    width: 12px;
+    height: 12px;
+    border: 2px solid $blue;
+    border-radius: 50%;
+    @include transition-simple;
+  }
+
+  &__radio:checked + &__dot {
+    background-color: $blue;
+  }
+
+  // ---- кнопки шага ----
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 24px;
+    margin-top: 24px;
+
+    &[hidden] {
+      display: none;
+    }
+
+    @include media("lg") {
+      gap: 16px;
+      margin-top: 20px;
+    }
+    @include media("sm") {
+      margin-top: auto;
+      padding-top: 20px;
+    }
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: $white;
+    @include transition-simple;
+
+    &[hidden] {
+      display: none;
+    }
+
+    @include hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__back-icon {
+    width: 24px;
+    height: 8px;
+
+    // на мобильном в макете «Вернуться назад» без стрелки
+    @include media("sm") {
+      display: none;
+    }
+  }
+
+  &__next {
+    width: 281px;
+
+    @include media("lg") {
+      flex: 1;
+      width: auto;
+      padding-inline: 16px;
+    }
+  }
+
+  // одна и та же стрелка (arrow-left), для «вперёд» зеркалим
+  &__next-icon {
+    width: 24px;
+    height: 8px;
+    transform: scaleX(-1);
+  }
+
+  // ---- финальный шаг ----
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 600px;
+    margin-top: 20px;
+  }
+
+  &__submit {
+    width: 100%;
+    margin-top: 4px;
+  }
+
+  // ---- «спасибо» ----
+  &__done {
+    position: relative;
+    margin-top: 24px;
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  &__done-title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+
+    @include media("lg") {
+      font-size: 20px;
+    }
+  }
+
+  &__done-text {
+    margin-top: 12px;
+    font-size: 16px;
+  }
+
+  // ---- пузыри ----
+  &__decor {
+    position: absolute;
+    display: none;
+    height: auto;
+    pointer-events: none;
+
+    // позиции из Figma (десктоп-блок 1300×404): группа 1 — top 48 / right 39.69, группа 2 — left 683.69 / bottom 19.58
+    &--desktop {
+      top: 48px;
+      right: 3.05%;
+      width: 264px;
+    }
+    &--second {
+      top: auto;
+      right: auto;
+      bottom: 19.6px;
+      left: 52.6%;
+      width: 219px;
+    }
+    // мобильный блок 345×670: два экземпляра одного svg (153px слева и 147px справа)
+    &--mobile {
+      left: 20px;
+      bottom: 35.3px;
+      width: 153px;
+    }
+    &--mobile-2 {
+      right: 20px;
+      left: auto;
+      bottom: 46.85px;
+      width: 147px;
+    }
+  }
+
+  &.is-final &__decor--desktop {
+    display: block;
+
+    @include media("lg") {
+      display: none;
+    }
+  }
+
+  &.is-final &__decor--mobile {
+    @include media("lg") {
+      display: block;
+    }
+  }
+
+  // на мобильном под кнопкой остаётся место под пузыри
+  &.is-final &__box {
+    @include media("lg") {
+      padding-bottom: 150px;
+    }
+  }
+}

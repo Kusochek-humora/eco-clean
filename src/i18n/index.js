@@ -20,6 +20,10 @@ export function translatePage(root = document) {
     });
   });
 
+  // title и description страницы
+  document.title = i18next.t('meta.title');
+  document.querySelector('meta[name="description"]')?.setAttribute('content', i18next.t('meta.description'));
+
   // в lang нужен код языка (BCP 47): казахский — kk, kz — код страны
   document.documentElement.lang = i18next.language === 'kz' ? 'kk' : i18next.language;
 }
