@@ -1,0 +1,99 @@
+@use "@/styles/abstracts" as *;
+
+// Слайдер на Swiper: слайды 310×426 (углы закруглены в самих картинках), gap 20.
+// Стрелки на десктопе справа от заголовка; на мобильном — под слайдером по центру.
+.gallery {
+  margin-top: $section-gap;
+
+  &__box {
+    position: relative;
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: $text-nav;
+
+    @include media("lg") {
+      font-size: 24px;
+    }
+  }
+
+  &__title-accent {
+    color: $blue;
+  }
+
+  &__slider {
+    margin-top: 24px;
+
+    @include media("lg") {
+      margin-top: 20px;
+    }
+  }
+
+  &__slide {
+    flex-shrink: 0;
+    width: 310px; // и на мобильном 310×426, следующий слайд выглядывает справа
+    height: auto;
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+    border-radius: 30px;
+  }
+
+  // ---- стрелки ----
+  &__nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    gap: 10px;
+
+    @include media("lg") {
+      position: static;
+      justify-content: center;
+      margin-top: 20px;
+    }
+  }
+
+  &__arrow {
+    @include flex-center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid $blue;
+    border-radius: 50%;
+    background-color: $white;
+    color: $blue;
+    @include transition-simple;
+
+    &--next {
+      background-color: $blue;
+      color: $white;
+    }
+
+    @include hover {
+      background-color: $card-bg;
+    }
+    &--next:hover,
+    &--next:focus-visible {
+      background-color: $blue-dark;
+    }
+
+    &.is-disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+  }
+
+  &__arrow-icon {
+    width: 13px;
+    height: 22px;
+  }
+
+  &__arrow--next &__arrow-icon {
+    transform: scaleX(-1);
+  }
+}

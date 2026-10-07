@@ -13,6 +13,7 @@ $black: #222;
 $text-nav: #000;
 $blue: #2252c1;
 $blue-light: #89b0f2;
+$blue-dark: #1b43a0; // плавный hover синих кнопок-кружков (градиент не анимируется), TODO: сверить с макетом
 $text-hover: #8a8a8a; // hover пунктов меню, города, языка (серый в ui-kit), TODO: сверить hex
 $gradient-section: linear-gradient(110deg, #2f77e0 0%, #2252c1 70%); // фон квиза, TODO: сверить с макетом
 $gradient-hover: linear-gradient(249.97deg, #2252c1 -7.22%, #58a3f2 102.18%);

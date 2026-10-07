@@ -1,0 +1,89 @@
+@use "@/styles/abstracts" as *;
+
+// Логотипы высотой 70px (файлы 70px по высоте, ширина по пропорциям), зазор ~40px.
+// Скорость и зазор оценены по скриншоту — при необходимости поправить $speed / gap.
+$speed: 40s;
+
+.partners {
+  margin-top: $section-gap;
+
+  &__title {
+    font-size: 32px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: $text-nav;
+
+    @include media("lg") {
+      font-size: 24px;
+    }
+  }
+
+  &__title-accent {
+    color: $blue;
+  }
+
+  &__marquee {
+    margin-top: 24px;
+    overflow: hidden;
+
+    @include media("lg") {
+      margin-top: 20px;
+    }
+  }
+
+  // без js (нет копии списка) — просто горизонтальная прокрутка
+  &__track {
+    display: flex;
+    width: max-content;
+
+    &.is-running {
+      animation: partners-scroll $speed linear infinite;
+
+      @media (hover: hover) {
+        &:hover {
+          animation-play-state: paused;
+        }
+      }
+    }
+  }
+
+  &__group {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 40px;
+    padding-right: 40px; // тот же зазор после последнего логотипа — бесшовный стык с копией
+    margin: 0;
+    list-style: none;
+
+    @include media("lg") {
+      gap: 24px;
+      padding-right: 24px;
+    }
+  }
+
+  &__item img {
+    display: block;
+    max-width: none;
+    width: auto;
+    height: 70px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__marquee {
+      overflow-x: auto;
+    }
+    &__track.is-running {
+      animation: none;
+    }
+  }
+}
+
+@keyframes partners-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
