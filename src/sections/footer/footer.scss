@@ -1,0 +1,137 @@
+@use "@/styles/abstracts" as *;
+
+// Из Figma: десктоп 1440×256, звёзды 298×216 (top 1 / right 76); мобильный ~390×526, звёзды 258 шириной (top 125 / left 156, выходят за правый край).
+// TODO: лого ~190px, шрифты 14/16px и отступы оценены по скриншотам; для мобильного нужен отдельный svg звёзд (258×257).
+.footer {
+  position: relative;
+  margin-top: $section-gap;
+  padding: 40px 0 24px;
+  overflow: hidden;
+  background: $gradient-section;
+  color: $white;
+
+  @include media("lg") {
+    padding: 30px 0 24px;
+  }
+  @include media("sm") {
+    min-height: 526px;
+  }
+
+  &__inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      "logo nav top"
+      "made . policy";
+    align-items: start;
+    gap: 0 48px;
+    min-height: 192px;
+
+    @include media("lg") {
+      grid-template-columns: 1fr auto;
+      grid-template-areas:
+        "logo top"
+        "nav nav"
+        "made made"
+        "policy policy";
+      gap: 36px 16px;
+      min-height: 0;
+    }
+  }
+
+  &__logo {
+    grid-area: logo;
+    color: $white;
+  }
+
+  &__logo-icon {
+    width: 190px;
+    height: auto;
+
+    @include media("lg") {
+      width: 152px;
+    }
+  }
+
+  &__nav {
+    grid-area: nav;
+    padding-top: 8px;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 48px;
+    font-size: 14px;
+    line-height: 1.5;
+
+    @include media("lg") {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    a {
+      @include transition-simple;
+
+      @include hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  &__top,
+  &__policy {
+    font-size: 14px;
+    line-height: 1.5;
+    text-decoration: underline;
+    @include transition-simple;
+
+    @include hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__top {
+    grid-area: top;
+    padding-top: 8px;
+
+    @include media("lg") {
+      padding-top: 12px;
+    }
+  }
+
+  &__made {
+    grid-area: made;
+    align-self: end;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  &__policy {
+    grid-area: policy;
+    align-self: end;
+    justify-self: end;
+
+    @include media("lg") {
+      justify-self: start;
+      margin-top: -32px; // между «Сделано в…» и политикой ~4px
+    }
+  }
+
+  &__decor {
+    position: absolute;
+    top: 1px;
+    right: 76px;
+    width: 298px;
+    height: auto;
+    pointer-events: none;
+
+    @include media("lg") {
+      top: 125px;
+      right: auto;
+      left: 156px;
+      width: 258px;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+// Анимация появления при скролле. Список селекторов должен совпадать с TARGETS в src/utils/reveal.js.
+// Скрытое состояние включается только при работающем js и без prefers-reduced-motion —
+// иначе контент остаётся видимым.
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  main > section:not(.hero):not(.advantages):not(.faq),
+  .footer,
+  .advantages__card,
+  .faq__title,
+  .faq__item {
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+      opacity 0.7s ease var(--reveal-delay, 0s),
+      transform 0.7s ease var(--reveal-delay, 0s);
+
+    &.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}

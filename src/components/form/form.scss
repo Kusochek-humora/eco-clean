@@ -25,12 +25,27 @@
   }
 }
 
+.form-note {
+  display: grid;
+  margin-top: 4px;
+
+  // ошибка и согласие лежат в одной ячейке сетки: при показе ошибки текст согласия
+  // скрывается (visibility), поэтому высота формы и блока не меняется
+  > * {
+    grid-area: 1 / 1;
+  }
+
+  &:has(.form-error:not([hidden])) .form-consent {
+    visibility: hidden;
+  }
+}
+
 .form-error {
-  padding: 8px 14px;
-  border-radius: 12px;
-  background-color: rgba($white, 0.9);
-  color: #c62828;
-  font-size: 14px;
+  align-self: center;
+  color: #ffd0d0;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.3;
 
   &[hidden] {
     display: none;
@@ -38,7 +53,7 @@
 }
 
 .form-consent {
-  margin-top: 4px;
+  margin: 0;
   font-size: 12px;
   line-height: 1.3;
   color: $white;

@@ -16,8 +16,13 @@ import { initLeadForms } from './components/lead-form/lead-form';
 import { initGallery } from './sections/gallery/gallery';
 import { initPartners } from './sections/partners/partners';
 import { initFaq } from './sections/faq/faq';
+import './sections/contacts/contacts';
+import './sections/footer/footer';
+import { initReveal } from './utils/reveal';
 import { initQuiz } from './sections/quiz/quiz';
 import { initHero } from './sections/hero/hero';
+
+initReveal();
 
 await initI18n();
 

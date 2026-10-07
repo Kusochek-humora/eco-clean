@@ -140,8 +140,10 @@
           <div class="quiz__fields">
             <input class="form-input" type="text" name="name" autocomplete="name" required placeholder="Ваше имя" data-i18n-placeholder="quiz.final.name" aria-label="Ваше имя" data-i18n-aria-label="quiz.final.name" />
             <input class="form-input" type="tel" name="phone" inputmode="tel" autocomplete="tel" required placeholder="Телефон" data-i18n-placeholder="quiz.final.phone" aria-label="Телефон" data-i18n-aria-label="quiz.final.phone" />
-            <p class="form-error" role="alert" hidden></p>
-            <p class="form-consent" data-i18n="quiz.final.consent">Нажимая на кнопку, вы соглашаетесь с условиями <a href="#privacy">Политики конфиденциальности</a></p>
+            <div class="form-note">
+              <p class="form-error" role="alert" hidden></p>
+              <p class="form-consent" data-i18n="quiz.final.consent">Нажимая на кнопку, вы соглашаетесь с условиями <a href="#privacy">Политики конфиденциальности</a></p>
+            </div>
             <button class="btn btn--glass quiz__submit" type="submit" data-i18n="quiz.final.submit">Получить консультацию</button>
           </div>
         </fieldset>

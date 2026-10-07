@@ -1,0 +1,189 @@
+@use "@/styles/abstracts" as *;
+
+// Блок 1300×456 из Figma: слева контакты, вертикальная линия (x 522, высота 384), справа форма (x 624),
+// звёзды 207×193 — left 314 / top 223. На ≤1024px: форма сверху, горизонтальная линия, контакты ниже.
+// TODO: размеры шрифтов (16) и мобильные позиции звёзд оценены по скриншотам — сверить
+.contacts {
+  margin-top: $section-gap;
+
+  &__box {
+    position: relative;
+    display: grid;
+    grid-template-columns: 482px 1px 1fr;
+    padding: 40px;
+    overflow: hidden;
+    border-radius: $radius-section;
+    background: $gradient-section;
+    color: $white;
+
+    @include media("lg") {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      border-radius: $radius-card;
+    }
+  }
+
+  // ---- левая колонка ----
+  &__info {
+    position: relative;
+    min-width: 0;
+
+    @include media("lg") {
+      order: 3;
+    }
+  }
+
+  &__title,
+  &__form-title {
+    font-size: 32px;
+    line-height: 1.2;
+    text-transform: uppercase;
+
+    @include media("lg") {
+      font-size: 24px;
+    }
+  }
+
+  &__intro {
+    margin-top: 20px;
+    max-width: 350px;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin: 24px 0 0;
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 16px;
+    line-height: 1.2;
+
+    dt {
+      text-transform: uppercase;
+      color: rgba($white, 0.6);
+    }
+    dd {
+      margin: 0;
+    }
+    a {
+      @include transition-simple;
+
+      @include hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  &__social {
+    display: flex;
+    gap: 10px;
+    margin: 24px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__soc {
+    @include flex-center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: $white;
+    color: $blue;
+    @include transition-simple;
+
+    @include hover {
+      background-color: $card-bg;
+    }
+
+    @include media("lg") {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  // иконки в натуральном размере (Instagram и WhatsApp 25px, TikTok 32px), цвет — градиент внутри svg
+  &__soc-icon {
+    flex-shrink: 0;
+  }
+
+  // ---- разделитель ----
+  &__line {
+    align-self: center;
+    width: 1px;
+    height: 384px;
+    background-color: $white;
+
+    @include media("lg") {
+      order: 2;
+      align-self: auto;
+      width: 100%;
+      height: 1px;
+      margin: 40px 0;
+    }
+  }
+
+  // ---- правая колонка: форма ----
+  &__form {
+    position: relative;
+    min-width: 0;
+    padding-left: 101px;
+
+    @include media("lg") {
+      order: 1;
+      padding-left: 0;
+    }
+
+    .lead-form {
+      margin-top: 20px;
+    }
+  }
+
+  &__form-desc {
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  // ---- звёзды ----
+  &__decor {
+    position: absolute;
+    top: 223px;
+    left: 314px;
+    width: 207px;
+    height: auto;
+    color: #fafafa;
+    pointer-events: none;
+
+    @include media("lg") {
+      top: auto;
+      right: 30px;
+      bottom: 90px;
+      left: auto;
+      width: 100px;
+    }
+  }
+
+  // маленькая звезда справа от заголовка формы — только на мобильном (как в блоке «Закажите уборку»)
+  &__spark {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 8px;
+    width: 93px;
+    height: auto;
+    color: #fafafa;
+    pointer-events: none;
+
+    @include media("lg") {
+      display: block;
+    }
+  }
+}

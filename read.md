@@ -36,7 +36,9 @@ npm run preview  # посмотреть сборку
 2. В `index.html`: `<include src="src/sections/about/about.html"></include>`.
 3. В `src/main.js`: `import './sections/about/about';` (или `initAbout()`, если есть логика).
 
-## Деплой на GitHub Pages
+## Деплой на GitHub Pages (автоматический)
 
-В `vite.config.js` уже стоит `base: './'`. Раскомментировать `build.outDir: 'docs'`,
-выполнить `npm run build`, закоммитить `docs/` и выбрать в Settings → Pages ветку `main` и папку `/docs`.
+Каждый пуш в `main` запускает workflow `.github/workflows/deploy.yml`: `npm ci` → `npm run build` → публикация `dist/` на GitHub Pages.
+В репозитории один раз: Settings → Pages → Source: **GitHub Actions**. Статус сборки — вкладка Actions.
+Сайт: https://kusochek-humora.github.io/eco-clean/ (в `vite.config.js` стоит `base: './'`, поэтому работает из любой папки).
+Нужен закоммиченный `package-lock.json` (его использует `npm ci`).
